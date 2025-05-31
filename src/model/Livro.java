@@ -40,14 +40,3 @@ public class Livro {
     public int getQuantidade() { return quantidade; }
     public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
 
-    @Override
-    public String toString() {
-        return "Livro{" +
-               "id=" + id +
-               ", titulo='" + titulo + '\'' +
-               ", autor='" + autor + '\'' +
-               ", ano=" + ano +
-               ", quantidade=" + quantidade +
-               '}';
-    }
-}
