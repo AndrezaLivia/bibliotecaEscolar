@@ -4,25 +4,24 @@ public class Livro {
     private int id;
     private String titulo;
     private String autor;
-    private String editora;
     private int ano;
     private int quantidade;
 
     public Livro() {}
 
-    public Livro(int id, String titulo, String autor, String ano, String quantidade) {
+    public Livro(int id, String titulo, String autor, int ano, int quantidade) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-        this.ano = Integer.parseInt(ano);
-        this.quantidade = Integer.parseInt(quantidade);
+        this.ano = ano;
+        this.quantidade = quantidade;
     }
 
-    public Livro(String titulo, String autor, String ano, String quantidade) {
+    public Livro(String titulo, String autor, int ano, int quantidade) {
         this.titulo = titulo;
         this.autor = autor;
-        this.ano = Integer.parseInt(ano);
-        this.quantidade = Integer.parseInt(quantidade);
+        this.ano = ano;
+        this.quantidade = quantidade;
     }
 
 
@@ -40,4 +39,15 @@ public class Livro {
 
     public int getQuantidade() { return quantidade; }
     public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+               "id=" + id +
+               ", titulo='" + titulo + '\'' +
+               ", autor='" + autor + '\'' +
+               ", ano=" + ano +
+               ", quantidade=" + quantidade +
+               '}';
+    }
 }
