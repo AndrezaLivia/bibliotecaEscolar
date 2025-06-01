@@ -1,7 +1,6 @@
 package dao;
 
 import model.Emprestimo;
-import model.Livro;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
