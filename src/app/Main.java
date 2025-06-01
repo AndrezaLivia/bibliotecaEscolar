@@ -253,8 +253,7 @@ public class Main {
                                         } else if (livroEmprestimo == null) {
                                             System.out.println("Erro: Livro com ID " + idLivroEmprestimo + " não encontrado.");
                                         } else {
-                                            Date dataDevolucaoPrevista = Date.valueOf(LocalDate.now().plusDays(diasDevolucao));
-                                            Emprestimo novoEmprestimo = new Emprestimo(idAlunoEmprestimo, idLivroEmprestimo, dataDevolucaoPrevista);
+                                            Emprestimo novoEmprestimo = new Emprestimo(idAlunoEmprestimo, idLivroEmprestimo, diasDevolucao);
                                             emprestimoDAO.inserir(novoEmprestimo);
                                         }
                                         break;
@@ -404,3 +403,4 @@ public class Main {
         }
     }
 }
+
