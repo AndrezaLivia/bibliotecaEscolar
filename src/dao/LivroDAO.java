@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Livro;
-import utill.Conexao;
 
 public class LivroDAO {
 
