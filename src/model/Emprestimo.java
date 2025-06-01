@@ -67,4 +67,16 @@ public class Emprestimo {
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+    
+    @Override
+    public String toString() {
+        return "Emprestimo {" +
+                "id=" + id +
+                ", idAluno=" + idAluno +
+                ", idLivro=" + idLivro +
+                ", dataEmprestimo=" + (dataEmprestimo != null ? dataEmprestimo.toString() : "null") +
+                ", dataDevolucao=" + (dataDevolucao != null ? dataDevolucao.toString() : "null") +
+                '}';
+    }
+    
 }
