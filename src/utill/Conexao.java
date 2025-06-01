@@ -5,28 +5,51 @@ import java.sql.*;
 public class Conexao {
     private static final String HOST = "localhost";
     private static final String PORTA = "3306";
-    private static final String USUARIO = "root";
-    private static final String SENHA = "";
+    private static final String USUARIO = "bibliotecar";
+    private static final String SENHA = "jhh138";
     private static final String BANCO = "bibliotecaescolar";
 
     public static Connection checarDB() throws SQLException {
-        try {
-            try (Connection conexao = conectarDB()) {
-                criarTabelasSeNaoExistir(conexao);
-                inserirDadosMock(conexao);
-
-                System.out.println("Banco e tabelas prontos para uso!");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw e;
+        try (Connection conexao = DriverManager.getConnection(
+                "jdbc:mysql://" + HOST + ":" + PORTA, USUARIO, SENHA)) {
+            
+            criarDatabaseSeNaoExistir(conexao);
         }
+        
+        try (Connection conexao = conectarDB()) {
+            criarTabelasSeNaoExistir(conexao);
+            inserirDadosMock(conexao);
+            System.out.println("Banco e tabelas prontos para uso!");
+        }
+        
         return conectarDB();
     }
 
     private static Connection conectarDB() throws SQLException {
         String url = "jdbc:mysql://" + HOST + ":" + PORTA + "/" + BANCO;
         return DriverManager.getConnection(url, USUARIO, SENHA);
+    }
+
+    private static void criarDatabaseSeNaoExistir(Connection conexao) throws SQLException {
+        try (ResultSet resultSet = conexao.getMetaData().getCatalogs()) {
+            boolean databaseExiste = false;
+            
+            while (resultSet.next()) {
+                String databaseName = resultSet.getString(1);
+                if(databaseName.equals(BANCO)) {
+                    databaseExiste = true;
+                    break;
+                }
+            }
+            
+            if(!databaseExiste) {
+                try (Statement stmt = conexao.createStatement()) {
+                    stmt.executeUpdate("CREATE DATABASE " + BANCO);
+                    stmt.executeUpdate("USE " + BANCO);
+                    System.out.println("Database created successfully...");
+                }
+            }
+        }
     }
 
     private static void criarTabelasSeNaoExistir(Connection conexao) throws SQLException {
