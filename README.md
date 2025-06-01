@@ -4,14 +4,14 @@
 
 Conexao.java (no pacote utill): classe de acesso ao banco de dados. Realiza a comunicação com o MySQL.
 
-checarDB(): a função se conecta no banco e verifica se as tabelas (Alunos, Livros, Emprestimos) já existem. Se não existirem, ela as criará.
+Foi criada a função checarDB(), que se conecta no banco e verifica se as tabelas (Alunos, Livros, Emprestimos) já existem e foi criada também a função criarDatabaseSeNaoExistir(), caso ele não exista . Se não existirem, ela as criará.
 
 Inserção de Dados de Teste (Mock Data): Para facilitar o desenvolvimento e testes, inserirDadosMock() insere um conjunto de dados de exemplo (alunos, livros e empréstimos, incluindo um 
 empréstimo ativo com data_devolucao NULL) se as tabelas estiverem vazias
 
 Classes model (Aluno.java, Livro.java, Emprestimo.java): Objetos que representam os Alunos, Livros e Empréstimos, com todas as suas características (nome, título, datas, etc.). 
 
-Classes dao (AlunoDAO.java, LivroDAO.java, EmprestimoDAO.java): As classes DAO interagem diretamente com o banco de dados.
+Classes dao (AlunoDAO.java, LivroDAO.java, EmprestimoDAO.java): as classes DAO interagem diretamente com o banco de dados.
 
 AlunoDAO.java: implementa as operações básicas de CRUD (Create, Read, Update, Delete) dos alunos (cadastrar, listar, buscar, atualizar, excluir). Na classe, a variável matricula é 
 definida como UNIQUE para evitar duplicidade.
